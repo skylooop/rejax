@@ -57,7 +57,21 @@ class Brax2GymnaxEnv(GymnaxEnv):
         return spaces.Box(
             low=-jnp.inf, high=jnp.inf, shape=(self.env.observation_size,)
         )
-
+    def render(self, trajectory):
+        # pics = [Image.fromarray(img) for img in imgs]        
+        # pics[0].save(
+        #     "brax.gif",
+        #     format="GIF",
+        #     save_all=True,
+        #     optimize=False,
+        #     append_images=pics[1:],
+        #     duration=1000,
+        #     loop=0,
+        # )
+        return self.env.render(trajectory)
+    
+    #def create_gif
+    
     @property
     def num_actions(self) -> int:
         return self.env.action_size
